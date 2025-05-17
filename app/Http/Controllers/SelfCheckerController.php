@@ -40,6 +40,8 @@ class SelfCheckerController extends Controller
 
         $dto = new DocumentGenerateDTO($this->stableData, $topResults);
 
+        // dd($dto->toArray());
+
         $documentId = $this->documentGenerate($dto);
 
         // процесс генерации документа занимает какое-то время
@@ -54,7 +56,7 @@ class SelfCheckerController extends Controller
         return response()->json([
             'errors' => [],
             'data' => [
-                'linkToPdf' => $document->document_card->public_share_link
+                'link_to_pdf' => $document->document_card->public_share_link
             ],
             'success' => true,
             'status' => 200,

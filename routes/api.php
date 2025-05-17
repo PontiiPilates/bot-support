@@ -3,8 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-require_once('endpoints/self_checker.php');
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +16,8 @@ require_once('endpoints/self_checker.php');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix' => 'self-checker'], static function (): void {
+    require_once('endpoints/self_checker.php');
 });
